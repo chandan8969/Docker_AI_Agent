@@ -20,6 +20,12 @@ async def main():
         model = ChatOllama(model = "gemma4",  temperature = 0.8)
         agent = create_agent(model,tools)
         print("Agent created, invoking...")
+        while True:
+            user_input = input("\nEnter your Docker query (or exit): \n > ")
+
+            if user_input.lower() == "exit":
+                print("Exiting...")
+                break
 
     
         #response = await agent.ainvoke({"messages": [{"role": "user", "content": "how many containers running on local system"}]})
@@ -28,7 +34,7 @@ async def main():
         try:
             response = await asyncio.wait_for(
                 agent.ainvoke(
-                    {"messages": [{"role": "user", "content": "how many containers running on local system"}]}
+                    {"messages": [{"role": "user", "content":  user_inpu}]}
                 ),
                 timeout=300,
             )
