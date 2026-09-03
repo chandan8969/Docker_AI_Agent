@@ -31,17 +31,13 @@ async def main():
         #response = await agent.ainvoke({"messages": [{"role": "user", "content": "how many containers running on local system"}]})
         #print("Got response!")
         #print(response["messages"][-1].content)
-        try:
-            response = await asyncio.wait_for(
-                agent.ainvoke(
-                    {"messages": [{"role": "user", "content":  user_inpu}]}
-                ),
-                timeout=300,
-            )
-            print("Got response!")
+        response = await agent.ainvoke(
+                    {"messages": [{"role": "user", "content": user_input}]}
+                )
+
+            print("\nAnswer:")
             print(response["messages"][-1].content)
-        except asyncio.TimeoutError:
-            print("Still hanging after 5 minutes — not just slow, likely a parsing/format issue.")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
