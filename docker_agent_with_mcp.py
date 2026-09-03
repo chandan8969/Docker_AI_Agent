@@ -8,7 +8,7 @@ async def main():
             {
                 "docker-mcp" : {
                 "command": "python",
-                "args" : ["mcp_server.py"],
+                "args" : ["docker_mcp_server.py"],
                 "transport": "stdio"
             
                 }
